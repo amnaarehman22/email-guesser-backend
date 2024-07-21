@@ -24,13 +24,13 @@ describe('deriveEmail', () => {
         const result = deriveEmail('Jane Doe', 'babbel.com');
         expect(result.success).toBe(true);
         expect(result.emails).toContain('jdoe@babbel.com');
-        expect(result.emails).toContain('jdoe@babbel.com'); // Patterns should also be included
+        expect(result.emails).toContain('jdoe@babbel.com'); 
     });
 
     test('should handle a case where only a first name is provided', () => {
         const result = deriveEmail('Jane', 'babbel.com');
         expect(result.success).toBe(true);
-        expect(result.emails).toContain('jane@babbel.com'); // Patterns should include this
+        expect(result.emails).toContain('jane@babbel.com');  
     });
 
     test('should handle a case where domain is not found', () => {

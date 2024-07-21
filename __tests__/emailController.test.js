@@ -15,6 +15,8 @@ describe('POST /api/derive-email', () => {
     
     expect(response.status).toBe(200);
     expect(response.body.emails).toContain('jdoe@babbel.com');
+    expect(response.body.emails).toContain('janedoe@babbel.com');
+
   });
 
   it('should handle missing domain', async () => {
