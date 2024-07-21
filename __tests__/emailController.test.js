@@ -12,18 +12,16 @@ describe('POST /api/derive-email', () => {
     const response = await request(app)
       .post('/api/derive-email')
       .send({ fullName: 'Jane Doe', domain: 'babbel.com' });
-    
-    expect(response.status).toBe(200);
-    expect(response.body.emails).toContain('jdoe@babbel.com');
-    expect(response.body.emails).toContain('janedoe@babbel.com');
 
+    expect(response.status).toBe(200);
+    expect(response.body.emails).toEqual(expect.arrayContaining(['janedoe@babbel.com', 'jdoe@babbel.com']));
   });
 
   it('should handle missing domain', async () => {
     const response = await request(app)
       .post('/api/derive-email')
       .send({ fullName: 'Jane Doe' });
-    
+
     expect(response.status).toBe(400);
     expect(response.body.error).toBe('Both full name and company domain are required.');
   });
@@ -32,7 +30,7 @@ describe('POST /api/derive-email', () => {
     const response = await request(app)
       .post('/api/derive-email')
       .send({ domain: 'babbel.com' });
-    
+
     expect(response.status).toBe(400);
     expect(response.body.error).toBe('Both full name and company domain are required.');
   });
@@ -41,7 +39,7 @@ describe('POST /api/derive-email', () => {
     const response = await request(app)
       .post('/api/derive-email')
       .send({ fullName: 'Jane Doe', domain: 'unknown.com' });
-    
+
     expect(response.status).toBe(404);
     expect(response.body.error).toBe('Company domain not found in our data.');
   });

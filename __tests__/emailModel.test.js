@@ -23,26 +23,25 @@ describe('deriveEmail', () => {
     test('should return emails for valid full name and domain', () => {
         const result = deriveEmail('Jane Doe', 'babbel.com');
         expect(result.success).toBe(true);
-        expect(result.emails).toContain('jdoe@babbel.com');
-        expect(result.emails).toContain('jdoe@babbel.com'); 
+        expect(result.emails).toEqual(expect.arrayContaining(['janedoe@babbel.com', 'jdoe@babbel.com']));
     });
 
     test('should handle a case where only a first name is provided', () => {
         const result = deriveEmail('Jane', 'babbel.com');
         expect(result.success).toBe(true);
-        expect(result.emails).toContain('jane@babbel.com');  
+        expect(result.emails).toEqual(expect.arrayContaining(['jane@babbel.com']));
     });
 
     test('should handle a case where domain is not found', () => {
         const result = deriveEmail('Jane Doe', 'unknown.com');
         expect(result.success).toBe(false);
-        expect(result.error).toBe(ERROR_MESSAGES.PATTERN_NOT_FOUND);
+        expect(result.error).toBe('Company domain not found in our data.');
     });
 
     test('should handle a case where full name is invalid', () => {
         const result = deriveEmail('', 'babbel.com');
         expect(result.success).toBe(false);
-        expect(result.error).toBe(ERROR_MESSAGES.INVALID_FORMAT);
+        expect(result.error).toBe('Invalid format for full name or company domain.');
     });
 
     afterEach(() => {

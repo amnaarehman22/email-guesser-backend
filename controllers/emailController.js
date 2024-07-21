@@ -19,6 +19,9 @@ const handleDeriveEmail = (req, res) => {
         if (result.success) {
             return res.json({ emails: result.emails });
         } else {
+            if (result.error === ERROR_MESSAGES.PATTERN_NOT_FOUND) {
+                return res.status(404).json({ error: result.error });
+            }
             return res.status(400).json({ error: result.error });
         }
     } catch (error) {

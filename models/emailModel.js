@@ -26,8 +26,6 @@ const loadSampleEmails = () => {
 };
 
 const deriveEmail = (fullName, domain) => {
-    console.log("deriveEmail:", fullName, domain);
-
     // Convert inputs to lowercase for case-insensitive processing
     const lowerCaseDomain = domain.toLowerCase();
     const lowerCaseFullName = fullName.toLowerCase();
