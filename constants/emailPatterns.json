@@ -1,0 +1,38 @@
+[
+    {
+      "domain": "amazon.com",
+      "patterns": [
+        "{first_name}{last_name}@{domain}",
+        "{first_name_initial}{last_name}@{domain}"
+      ]
+    },
+    {
+      "domain": "babbel.com",
+      "patterns": [
+        "{first_name}{last_name}@{domain}",
+        "{first_name_initial}{last_name}@{domain}"
+      ]
+    },
+    {
+      "domain": "linkedin.com",
+      "patterns": [
+        "{first_name}{last_name}@{domain}",
+        "{first_name_initial}{last_name}@{domain}"
+      ]
+    },
+    {
+      "domain": "google.com",
+      "patterns": [
+        "{first_name}{last_name}@{domain}",
+        "{first_name_initial}{last_name}@{domain}"
+      ]
+    },
+    {
+      "domain": "babble.com",
+      "patterns": [
+        "{first_name}{last_name}@{domain}",
+        "{first_name_initial}{last_name}@{domain}"
+      ]
+    }
+  ]
+  
